@@ -1,0 +1,15 @@
+{
+	"name": "scical",
+	"version": "1.0.0",
+	"description": "Data Structures project",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "test"
+	},
+	"keywords": [
+		"calculator"
+	],
+	"author": "Jerome Cabugwason",
+	"license": "ISC"
+}
