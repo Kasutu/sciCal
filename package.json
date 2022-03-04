@@ -11,5 +11,8 @@
 		"calculator"
 	],
 	"author": "Jerome Cabugwason",
-	"license": "ISC"
+	"license": "ISC",
+	"dependencies": {
+		"enquirer": "^2.3.6"
+	}
 }

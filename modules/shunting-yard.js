@@ -27,12 +27,12 @@ export default async function parseInfix(rawInput) {
 	}
 
 	while (!tokenStack.isEmpty()) {
-		const token = await tokenStack.pop();
+		const token = await tokenStack.pop();							[1, +, 2, , , , ]
 
 		if (isNum(token)) {
 			// a number
 			outputStack.push(token);
-		} else if (await findIn(token, Properties)) {
+		} else if (await findIn(token, Properties)) { 
 			// a property like PI
 			outputStack.push(token);
 		} else if (await findIn(token, functions)) {
