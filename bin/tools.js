@@ -12,7 +12,10 @@ const charStack = new Stack();
 
 export async function makeProperPrefix(str) {
 	const charArr = str.replace(/\s/g, '').split('');
+	console.log(charArr);
 	await pushTo(charArr, charStack);
+	console.log(charStack);
+
 	let word = '';
 	let numbers = '';
 
