@@ -4,7 +4,9 @@
 - [Operator precedence values](https://en.wikipedia.org/wiki/Order_of_operations)
 - [Operator precedence parser](https://en.wikipedia.org/wiki/Operator-precedence_parser)
 
-# How to use
+# Getting started
+## Setup
+- clone this repo and navigate to the cloned folder
 
 1. to Install dependencies, cd to src folder and execute this command
 
