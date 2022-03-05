@@ -21,6 +21,7 @@ export async function makeProperPrefix(str) {
 
 	while (!charStack.isEmpty()) {
 		const char = charStack.pop();
+		console.log('READING ->', char);
 
 		if (await findIn(char, Ignore)) {
 			if (char === ',') {
@@ -67,7 +68,18 @@ export async function makeProperPrefix(str) {
 		if (isNum(char)) {
 			// a Number
 			numbers += char;
-			pushIfWord();
+			while (!charStack.isEmpty() && isNum(char)) {
+				const token2 = charStack.pop();
+
+				if (!isNum(token2)) {
+					pushIfNumber();
+					break;
+				}
+
+				numbers += token2;
+				pushIfWord();
+				console.log('NUMBER ->', char);
+			}
 		}
 	}
 

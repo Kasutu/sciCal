@@ -1,6 +1,6 @@
 import Stack from '../bin/stack.js';
 import SyntaxError from '../lib/error-reference.js';
-import { makeProperPrefix, isNum, findIn } from '../bin/tools.js';
+import { isNum, findIn } from '../bin/tools.js';
 import {
 	Operators,
 	Functions,
@@ -8,26 +8,18 @@ import {
 	Properties,
 } from '../lib/key-reference.js';
 import comparePrecedence from '../bin/precedence.js';
-
-const operators = Operators;
-const functions = Functions;
-const parenthesis = Parenthesis;
-
-const tokenStack = new Stack();
-const operatorStack = new Stack();
-const outputStack = new Stack();
+import JSInfixTokenizer from '../bin/tokenizerClone.js';
 
 export default async function parseInfix(rawInput) {
-	// makes it readable for the algorithm and converts to a stack array
-	// with a format similar to input
-	const prefixStack = await makeProperPrefix(rawInput);
+	const operators = Operators;
+	const functions = Functions;
+	const parenthesis = Parenthesis;
+	const operatorStack = new Stack();
+	const outputStack = new Stack();
+	const tokenizer = new JSInfixTokenizer(rawInput);
 
-	while (!prefixStack.isEmpty()) {
-		tokenStack.push(prefixStack.pop());
-	}
-
-	while (!tokenStack.isEmpty()) {
-		const token = await tokenStack.pop();
+	while (tokenizer.hasMoreTokens()) {
+		const token = tokenizer.readToken();
 
 		if (isNum(token)) {
 			// a number
@@ -79,7 +71,7 @@ export default async function parseInfix(rawInput) {
 		}
 	}
 
-	while (tokenStack.isEmpty() && !operatorStack.isEmpty()) {
+	while (!tokenizer.hasMoreTokens() && !operatorStack.isEmpty()) {
 		if (operatorStack.peek() !== parenthesis.left) {
 			SyntaxError(1);
 		}
