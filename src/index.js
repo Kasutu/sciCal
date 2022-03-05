@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import parseInfix from '../modules/shunting-yard.js';
 import DoMath from '../modules/solver.js';
 import pkg from 'enquirer';
