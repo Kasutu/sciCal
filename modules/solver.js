@@ -65,6 +65,22 @@ export default async function DoMath(outputStack) {
 					operandStack.push(Math.max(a, b));
 					break;
 
+				case 'tan':
+					operandStack.push(Math.tan((a * Math.PI) / 180));
+					break;
+
+				case 'log':
+					operandStack.push(Math.log(b) / Math.log(a));
+					break;
+
+				case 'sqrt':
+					operandStack.push(Math.sqrt(a * a + b * b));
+					break;
+
+				case 'cbrt':
+					operandStack.push(Math.cbrt(a));
+					break;
+
 				default:
 					break;
 			}
